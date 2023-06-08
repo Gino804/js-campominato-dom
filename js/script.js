@@ -43,6 +43,9 @@ console.log(playButton);
 const grid = document.getElementById('grid');
 console.log(grid);
 
+const messagePlaceholder = document.getElementById('message');
+console.log(messagePlaceholder);
+
 let isClicked = 0;
 
 // Quando l'utente clicca sul bottone
@@ -110,7 +113,7 @@ playButton.addEventListener('click', function()
                 cell.classList.add('bomb');
 
                 // Comunico all'utente che ha perso
-                alert('Hai perso');
+                messagePlaceholder.innerText = 'You lost! ' + `Score: ${score}`;
 
                 // Indico che la partita è finita
                 gameOver = 1;
@@ -127,7 +130,7 @@ playButton.addEventListener('click', function()
             if(score === totalCells - bombs.length)
             {
                 // Comunico all'utente che ha vinto
-                alert('Hai vinto!');
+                messagePlaceholder.innerText = 'You won! ' + `Score: ${score}`;
 
                 // Indico che la partita è finita
                 gameOver = 1;
