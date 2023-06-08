@@ -104,27 +104,23 @@ playButton.addEventListener('click', function()
             if(gameOver || cell.classList.contains('clicked')) return;
 
             // Recupero il numero della cella
-            const cellNumber = parseInt(cell.innerText);
+            let cellNumber = parseInt(cell.innerText);
 
             // Se la cella cliccata è una bomba
             if(bombs.includes(cellNumber))
             {
-                // Coloro la cella di rosso
-                cell.classList.add('bomb');
-
                 // Comunico all'utente che ha perso
                 messagePlaceholder.innerText = 'You lost! ' + `Score: ${score}`;
 
                 // Indico che la partita è finita
                 gameOver = 1;
-                return;
             }
 
             // Rendo cliccata la cella
             cell.classList.add('clicked');
 
             // Incremento il punteggio
-            score++;
+            if(!gameOver) score++;
 
             // Se il punteggio ha raggiunto il punteggio massimo
             if(score === totalCells - bombs.length)
@@ -134,6 +130,18 @@ playButton.addEventListener('click', function()
 
                 // Indico che la partita è finita
                 gameOver = 1;
+            }
+
+            // Se la partita è finita
+            if(gameOver)
+            {
+                // Coloro tutte le bombe di rosso
+                const cells = document.querySelectorAll('.cell');
+                for(let i = 0; i < totalCells; i++)
+                {
+                    cellNumber = parseInt(cells[i].innerText);
+                    if(bombs.includes(cellNumber)) cells[i].classList.add('bomb');
+                }
             }
         })
     }
