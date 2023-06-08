@@ -81,6 +81,7 @@ playButton.addEventListener('click', function()
 
     // Inizializzo il punteggio
     let score = 0;
+    let gameOver = 0;
 
     for(i = 1; i <= totalCells; i++)
     {
@@ -96,7 +97,25 @@ playButton.addEventListener('click', function()
         // Quando l'utente clicca su una cella
         cell.addEventListener('click', function()
         {
-            if(cell.classList.contains('clicked')) return;
+            // Se la partita è finita o se la cella è già stata cliccata
+            if(gameOver || cell.classList.contains('clicked')) return;
+
+            // Recupero il numero della cella
+            const cellNumber = parseInt(cell.innerText);
+
+            // Se la cella cliccata è una bomba
+            if(bombs.includes(cellNumber))
+            {
+                // Coloro la cella di rosso
+                cell.classList.add('bomb');
+
+                // Indico all'utente che ha perso
+                alert('Hai perso');
+
+                // Indico che la partita è finita
+                gameOver = 1;
+                return;
+            }
 
             // Rendo cliccata la cella
             cell.classList.add('clicked');

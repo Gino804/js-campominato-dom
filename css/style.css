@@ -77,3 +77,8 @@ main
     background-color:aqua;
     cursor:not-allowed;
 }
+
+.bomb
+{
+    background-color:red;
+}
