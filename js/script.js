@@ -10,6 +10,32 @@ const createCell = (n) =>
     return cell;
 }
 
+// Creo una funzione per generare le bombe
+const createBombs = (totalCells) =>
+{
+    // Creo l'array delle bombe
+    const bombs = [];
+
+    let randomNumber;
+
+    // Per 16 volte
+    for(i = 0; i < 16; i++)
+    {
+        do
+        {
+            // Genero un numero randomico da 1 al totale delle celle
+            randomNumber = Math.floor(Math.random() * totalCells) + 1;
+        }
+        while(bombs.includes(randomNumber)); // Controllo se è già presente nell'array
+
+        // Inserisco il numero nell'array
+        bombs.push(randomNumber);
+    }
+
+    // Restituisco l'array di bombe
+    return bombs;
+}
+
 // Recupero gli elementi dal DOM
 const playButton = document.getElementById('play');
 console.log(playButton);
@@ -48,6 +74,10 @@ playButton.addEventListener('click', function()
 
     // Calcolo le celle totali moltiplicando righe e colonne
     const totalCells = rows * cols;
+
+    // Genero le bombe
+    const bombs = createBombs(totalCells);
+    console.table(bombs);
 
     // Inizializzo il punteggio
     let score = 0;
