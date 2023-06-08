@@ -109,7 +109,7 @@ playButton.addEventListener('click', function()
                 // Coloro la cella di rosso
                 cell.classList.add('bomb');
 
-                // Indico all'utente che ha perso
+                // Comunico all'utente che ha perso
                 alert('Hai perso');
 
                 // Indico che la partita è finita
@@ -122,6 +122,16 @@ playButton.addEventListener('click', function()
 
             // Incremento il punteggio
             score++;
+
+            // Se il punteggio ha raggiunto il punteggio massimo
+            if(score === totalCells - bombs.length)
+            {
+                // Comunico all'utente che ha vinto
+                alert('Hai vinto!');
+
+                // Indico che la partita è finita
+                gameOver = 1;
+            }
         })
     }
 })
