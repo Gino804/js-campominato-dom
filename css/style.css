@@ -1,0 +1,78 @@
+*
+{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body
+{
+    font-family: sans-serif;
+}
+
+header
+{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    height:100px;
+    padding:0 20px;
+}
+
+main
+{
+    background-color:mediumspringgreen;
+    padding:50px 0;
+    height:840px;
+}
+
+#difficulty
+{
+    width:150px;
+}
+
+#play
+{
+    padding:0 20px;
+}
+
+#grid
+{
+    margin:auto;
+    display:flex;
+    flex-wrap:wrap;
+    height:100%;
+    width:800px;
+}
+
+.cell
+{
+    border:1px solid black;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor: pointer;
+}   
+
+.cell.cell-10
+{
+    flex-basis:10%;
+    height:10%;
+}
+
+.cell.cell-9
+{
+    flex-basis:calc(100% / 9);
+    height:calc(100% / 9);
+}
+
+.cell.cell-7
+{
+    flex-basis:calc(100% / 7);
+    height:calc(100% / 7);
+}
+
+.bg-blue
+{
+    background-color:aqua;
+}
