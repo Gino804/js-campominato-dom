@@ -49,13 +49,35 @@ Colorare tutte le celle bomba quando la partita finisce
   - Gli assegno la classe che la rende una cella
   - Stampo all'interno della cella il numero passato come parametro
   - Restituisco l'elemento completo
+- Creo una funzione che generi le bombe:
+  - Creo l'array delle bombe (vuoto)
+  - **PER** 16 volte
+    - Genero un numero casuale da 1 al numero delle celle totali **FINCHÈ** è presente nell'array
+    - Inserisco il numero nell'array
+  - Restituisco l'array completo
 - Recupero gli elementi dal DOM
 - **QUANDO** l'utente clicca sul bottone
   - Recupero il valore della difficoltà
   - Stabilisco il numero di righe e di colonne della griglia
   - Calcolo le celle totali moltiplicando le righe per le colonne
+  - Genero le bombe invocando la funzione apposita
+  - Inizializzo il punteggio a 0
   - **PER TANTE VOLTE** quante sono le celle totali
     - Invoco la funzione che crea una cella passandole l'indice corrente come argomento e stampo il risultato in pagina
 - **QUANDO** l'utente clicca su una cella
-  - Stampo in console il numero della cella cliccata
-  - Coloro la cella d'azzurro
+  - **SE** La partita è finita **O SE** la cella è già stata cliccata
+    - **FINE**
+  - Assegno alla cella la classe che la rende cliccata
+  - Recupero il numero della cella
+  - **SE** la cella cliccata è una bomba
+    - Assegno alla cella la classe che la rende rossa
+    - Comunico all'utente che ha perso
+    - Indico che la partita è finita
+  - Rendo cliccata la cella
+  - **SE** la partita non è finita
+    - Incremento il punteggio di 1
+  - **SE** il punteggio corrente ha raggiunto il punteggio massimo
+    - Comunico all'utente che ha vinto
+    - Indico che la partita è finita
+  - **SE** la partita è finita
+    - Coloro tutte le celle bomba di rosso
