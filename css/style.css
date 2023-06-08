@@ -72,7 +72,8 @@ main
     height:calc(100% / 7);
 }
 
-.bg-blue
+.clicked
 {
     background-color:aqua;
+    cursor:not-allowed;
 }

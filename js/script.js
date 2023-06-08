@@ -49,6 +49,8 @@ playButton.addEventListener('click', function()
     // Calcolo le celle totali moltiplicando righe e colonne
     const totalCells = rows * cols;
 
+    // Inizializzo il punteggio
+    let score = 0;
 
     for(i = 1; i <= totalCells; i++)
     {
@@ -64,11 +66,13 @@ playButton.addEventListener('click', function()
         // Quando l'utente clicca su una cella
         cell.addEventListener('click', function()
         {
-            // Stampo in console il numero della cella
-            console.log(cell.innerText);
+            if(cell.classList.contains('clicked')) return;
 
-            // Coloro la cella d'azzurro
-            cell.classList.add('bg-blue');
+            // Rendo cliccata la cella
+            cell.classList.add('clicked');
+
+            // Incremento il punteggio
+            score++;
         })
     }
 })
